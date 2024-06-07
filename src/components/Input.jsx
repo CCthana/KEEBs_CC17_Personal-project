@@ -12,7 +12,7 @@ function Input({placeholder, type = 'text', error, value, onChange, name}) {
      onChange={onChange}
      name={name}
      />
- 
+      
      {error ? < small className="text-red-500">{error}</small> : null }
  </>
    )

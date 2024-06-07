@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        'kb-black' : '#2B2B2B'
+        'kb-black' : '#2B2B2B',
+        'kb-gray' : '#D9D9D9'
       }
     },
   },
