@@ -1,9 +1,20 @@
-import { Link } from 'react-router-dom'
+import {  useNavigate } from 'react-router-dom'
 import product from '../assets/product.png'
+import useProduct from '../hooks/useProduct'
 
 function ProductCard({ name, id, price, detail, image  }) {
+  const { selectedProduct } = useProduct();
+
+ const navigate = useNavigate();
+
+ const handleSelectedProduct = () => {
+    selectedProduct(id)
+    navigate(`/product/:${id}`)
+ }
+
   return (
-    <Link className=' w-[350px] h-[470px] shadow-xl rounded-sm ' to='/'>
+  
+    <div className=' w-[350px] h-[470px] shadow-xl rounded-sm ' type='button' onClick={handleSelectedProduct}> 
       <div className=' w-[350px] h-[350px '>
     
         <img src={image || product} className='rounded-sm' />
@@ -14,7 +25,7 @@ function ProductCard({ name, id, price, detail, image  }) {
          <p className=' text-sm'> {detail}</p>
          <p className=' text-lg mt-2 font-semibold '> ${price} </p>
       </div>
-    </Link>
+    </div>
   )
 }
 

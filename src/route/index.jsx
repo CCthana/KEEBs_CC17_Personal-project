@@ -8,6 +8,8 @@ import ProductPage from '../pages/ProductPage';
 import ProtectedRoute from '../components/ProtectedRoute';
 import ProductContextProvider from '../contexts/ProductContext';
 import ProductInfoPage from '../pages/ProductInfoPage';
+import MyCart from '../pages/MyCart';
+import Checkout from '../pages/Checkout';
 
 const router = createBrowserRouter([
       {path: '/' , 
@@ -24,7 +26,9 @@ const router = createBrowserRouter([
             {path: '/login', element: <LoginPage />},
             {path: '/register', element: <RegisterPage />},
             {path: '/product', element: <ProductPage />},
-            {path: '/product/:productid', element: <ProductInfoPage />},
+            {path: '/product/:id', element: <ProductInfoPage />},
+            {path: '/cart', element: <MyCart />},
+            {path: '/checkout', element: <Checkout />},
             
       
       ]

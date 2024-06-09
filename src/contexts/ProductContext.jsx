@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import productApi from "../apis/product";
+import { setSelectedProduct } from "../utils/local-storage";
 
 export  const ProductContext = createContext();
 
@@ -23,7 +24,15 @@ export default function ProductContextProvider({children}) {
       fetchAllProduct();
    }, []);
 
+   const selectedProduct = async (productId) => {
+      try {
+         setSelectedProduct(productId)
+      } catch (err) {
+         console.log(err)
+      }
+   }
 
 
-   return <ProductContext.Provider value={{ allProduct, isAllProductLoading  }}> {children} </ProductContext.Provider>
+
+   return <ProductContext.Provider value={{ allProduct, isAllProductLoading, selectedProduct  }}> {children} </ProductContext.Provider>
 } 
