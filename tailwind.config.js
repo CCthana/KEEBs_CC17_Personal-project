@@ -8,8 +8,10 @@ export default {
     extend: {
       colors: {
         'kb-black' : '#2B2B2B',
-        'kb-gray' : '#D9D9D9'
-      }
+        'kb-gray' : '#D9D9D9'},
+        backgroundImage: {
+          'hero-pattern': "url('/assets/KABUKICHOR2-darken.jpg')"}  
+      
     },
   },
   plugins: [],

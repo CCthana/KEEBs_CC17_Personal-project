@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom"
 import Input from "../components/Input"
 import { useState } from "react"
-import authApi from "../apis/auth"
 import validateLogin from "../validators/validator-login"
 import { useNavigate } from "react-router-dom"
+import useAuth from "../hooks/useAuth"
+import { AxiosError } from "axios"
 
 const initialInput = {
    email: '',
@@ -19,6 +20,8 @@ function LoginPage() {
    const [input, setInput] = useState(initialInput);
    const [inputError , setInputError] = useState(initialInputError);
 
+   const {login} = useAuth();
+
    const navigate = useNavigate();
 
       const handleChangeInput = e => {
@@ -28,23 +31,24 @@ function LoginPage() {
       const handleSubmitForm = async e => {
          try {
             e.preventDefault();
-            // const error = validateLogin(input);
-            // if (error) {
-            //    return setInputError(error)
-            // }
+            const error = validateLogin(input);
+            if (error) {
+               return setInputError(error)
+            }
             setInputError(initialInputError);
 
-            await authApi.login(input);
-               navigate('/')
+            await login(input);
+            navigate('/')
+
                alert('login succsess')
             
 
          } catch (err) {
             console.log(err);
-            if (err instanceof AxiosError) {
-               const message = err.response.status === 400 ? 'Invalid login' : 'intenal server error'
-                  return alert(message);
-                }
+            // if (err instanceof AxiosError) {
+            //    const message = err.response.status === 400 ? 'Invalid login' : 'intenal server error'
+            //       return alert(message);
+            //     }
             }
       }
        
