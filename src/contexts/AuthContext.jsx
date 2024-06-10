@@ -8,21 +8,26 @@ export default function AuthContextProvider({children}) {
    const [authUser, setAuthUser] = useState(null);
    const [isAuthUserLoading, setIsAuthUserLoading] = useState(true);
 
-   useEffect(() => {
-      const fetchUser = async () => {
-         try {
-            if(getAccessToken()) {
-               const res = await authApi.getAuthUser();
-               setAuthUser(res.data.user)
-            }
-         } catch (err) {
-            console.log(err)
-         } finally {
-            setIsAuthUserLoading(false);
+   
+   const fetchUser = async () => {
+      try {
+         if(getAccessToken()) {
+            const res = await authApi.getAuthUser();
+            setAuthUser(res.data.user)
          }
-      };
+      } catch (err) {
+         console.log(err)
+      } finally {
+         setIsAuthUserLoading(false);
+      }
+   };
+
+   
+   useEffect(() => {
+      
       fetchUser();
    }, []);
+
 
    const login = async credentials => {
       const res = await authApi.login(credentials)
@@ -32,12 +37,13 @@ export default function AuthContextProvider({children}) {
       
    };
 
+  
 
    const logout = () => {
       removeAccessToken();
       setAuthUser(null);
    };
     
-
-   return <AuthContext.Provider value={{ login, logout, authUser, isAuthUserLoading }}> {children} </AuthContext.Provider>
+ 
+   return <AuthContext.Provider value={{ login, logout, authUser, isAuthUserLoading, fetchUser }}> {children} </AuthContext.Provider>
 } 

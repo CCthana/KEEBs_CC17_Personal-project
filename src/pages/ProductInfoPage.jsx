@@ -4,9 +4,14 @@ import odin1 from '../assets/odinr4-1.png'
 import odin2 from '../assets/odinr4-2.png'
 import productApi from '../apis/product';
 import { getSelectedProduct } from '../utils/local-storage';
+import useAuth from '../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
+import cartApi from '../apis/cart';
 
 function ProductInfoPage() {
    const[selectedProduct, setSelectedProduct] = useState();
+   const { authUser } = useAuth();
+   const navigate = useNavigate();
 
    useEffect(() => {
       window.scrollTo(0, 0)
@@ -21,6 +26,26 @@ function ProductInfoPage() {
       }
       fetchSelectedProduct();
    },[])
+
+   const handleAddToCart = async () => {
+      try {
+
+         if (!authUser) {
+          confirm('Please login to add item to cart') ? navigate('/login') : null
+         }
+         if (authUser) {
+           const data = {
+             userId : authUser.id,
+             productId : selectedProduct.id,
+            }
+            const res = await cartApi.addItemToCart(data)
+            alert(res.data.message)
+            
+         }
+      } catch (err) {
+         console.log(err)
+      }
+   }
 
    
 
@@ -42,7 +67,7 @@ function ProductInfoPage() {
             <h1 className=' font-bold text-2xl mb-10'>$ {selectedProduct?.price}</h1>
             <h1>{selectedProduct?.detail}</h1>
             <div className='flex items-end justify-center pt-40'>
-               <button className=' bg-kb-black text-white w-full h-14 rounded-md'> add to cart </button>
+               <button className=' bg-kb-black text-white w-full h-14 rounded-md' onClick={handleAddToCart}> add to cart </button>
             </div>
          </div>
    </div>

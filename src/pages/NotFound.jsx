@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import banner from "../assets/KABUKICHOR2-darken.jpg";
-
+import notFound from "../assets/notFound.png"
 import alien from "../assets/alien.gif";
 import logo from "../assets/keebslogowh.png";
 
@@ -17,6 +17,10 @@ function NotFound() {
         <div className="flex flex-col justify-center items-center">
         <div>
           <img src={alien} className=" w-64 " />
+        </div>
+        
+        <div className="  flex items-center justify-center">
+          <img src={notFound} className="  w-[500px]  " />
         </div>
 
         <div className="  flex items-center justify-center">

@@ -1,5 +1,5 @@
 import Input from "../components/Input"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import validateRegister from "../validators/validate-register";
 import authApi from "../apis/auth";
 import { AxiosError } from "axios";
@@ -23,6 +23,7 @@ function RegisterPage() {
 
    const [input, setInput] = useState(initialInput);
    const [inputError, setInputError] = useState(initialInputError);
+   const navigate = useNavigate();
   
    const handleChangeInput = e => {setInput({...input, [e.target.name]:e.target.value})};
  
@@ -39,6 +40,8 @@ function RegisterPage() {
          await authApi.register(input)
 
         alert('register compelete')
+        setInput(initialInput)
+        navigate('/login')
 
      } catch (err) {
       if (err instanceof AxiosError) {
