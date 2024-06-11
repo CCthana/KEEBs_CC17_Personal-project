@@ -7,11 +7,13 @@ import { getSelectedProduct } from '../utils/local-storage';
 import useAuth from '../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 import cartApi from '../apis/cart';
+import useCart from '../hooks/useCart';
 
 function ProductInfoPage() {
    const[selectedProduct, setSelectedProduct] = useState();
    const { authUser } = useAuth();
    const navigate = useNavigate();
+   const { fetchCartItem } = useCart();
 
    useEffect(() => {
       window.scrollTo(0, 0)
@@ -39,6 +41,7 @@ function ProductInfoPage() {
              productId : selectedProduct.id,
             }
             const res = await cartApi.addItemToCart(data)
+            fetchCartItem()
             alert(res.data.message)
             
          }

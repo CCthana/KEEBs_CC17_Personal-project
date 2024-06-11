@@ -29,9 +29,10 @@ export default function AuthContextProvider({children}) {
    }, []);
 
 
-   const login = async credentials => {
+   const login = async (credentials) => {
       const res = await authApi.login(credentials)
       setAccessToken(res.data.accessToken);
+      console.log(res)
       const resGetAuthUser = await authApi.getAuthUser();
       setAuthUser(resGetAuthUser.data.user);
       

@@ -19,8 +19,9 @@ const initialInputError = {
 function LoginPage() {
    const [input, setInput] = useState(initialInput);
    const [inputError , setInputError] = useState(initialInputError);
+   
 
-   const {login} = useAuth();
+   const { login } = useAuth();
 
    const navigate = useNavigate();
 
@@ -34,6 +35,7 @@ function LoginPage() {
             const error = validateLogin(input);
             if (error) {
                return setInputError(error)
+
             }
             setInputError(initialInputError);
 
@@ -44,12 +46,17 @@ function LoginPage() {
             
 
          } catch (err) {
-            console.log(err);
-            // if (err instanceof AxiosError) {
-            //    const message = err.response.status === 400 ? 'Invalid login' : 'intenal server error'
-            //       return alert(message);
-            //     }
+           
+            alert('invalid email or password')
+            setInputError({  password: 'Invalid password'})
+            if (err instanceof AxiosError) {
+               const message = err.response.status === 400 ? 'Invalid login' : 'intenal server error'
+                  return (
+                     alert(message)
+               )
+                }
             }
+            
       }
        
     
@@ -67,7 +74,7 @@ function LoginPage() {
                <h1 className=" text-3xl font-extrabold mb-16">Sign in</h1>
 
                <h2 className=" text-xl font-medium" >Email</h2>
-
+               <div className="flex flex-col">
                <Input name='email' 
                value={input.email} 
                onChange={handleChangeInput}  
@@ -79,6 +86,7 @@ function LoginPage() {
                value={input.password} 
                onChange={handleChangeInput} 
                error={inputError.password} />
+               </div>
 
                <button type="submit" className=" w-60 h-16 bg-kb-black text-white rounded-md mt-8 font-semibold" > Sign in </button>
             

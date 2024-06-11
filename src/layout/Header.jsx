@@ -2,19 +2,20 @@ import { Link, useNavigate } from "react-router-dom"
 import logo from '../assets/keebslogo.png'
 import { CartIcon, PersonIcon } from "../icons"
 import useAuth from "../hooks/useAuth";
+import useCart from "../hooks/useCart";
 
 
 
 
 function Header() {
   const { logout, authUser } = useAuth();
-
+  const { cartItem } = useCart();
 
   const navigate = useNavigate();
 
   const handleClickLogout = () => {
      logout();
-     navigate('/');
+     navigate('/login');
   };
 
 
@@ -33,7 +34,7 @@ function Header() {
       <div className=" flex justify-center items-center gap-6 w-64 ">
         <Link to='profile'> <h1 className="font-bold hover:underline">{authUser?.userName}</h1> </Link>
         <Link to={authUser? '/profile' : '/login'} ><div className="w-8 h-8 rounded-full flex items-center justify-center p-1 hover:bg-gray-300"> <PersonIcon className=" h-5   " /> </div>  </Link>
-        <Link to={authUser? '/cart' : '/login'} > <div className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-300 p-1"> <CartIcon className=' h-9 ' />  </div>  </Link>
+        <Link to={authUser? '/cart' : '/login'} > <div className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-300 p-1 relative"> <CartIcon className=' h-9 ' /> {cartItem.length > 0 ? <div className="absolute top-0 -right-1 w-4 h-4  bg-red-600 text-white text-xs rounded-full flex justify-center items-center"> {cartItem.length} </div> : null } </div>  </Link>
         {authUser ? <button className="font-bold" onClick={handleClickLogout}>Logout</button> : null}
       </div>
     

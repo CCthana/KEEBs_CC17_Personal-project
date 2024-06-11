@@ -3,6 +3,7 @@ import Input from "../components/Input"
 import userApi from "../apis/user";
 import useAuth from "../hooks/useAuth";
 import validateAddress from "../validators/validate-address";
+import { Link } from "react-router-dom";
 
 
 const initialInput = {
@@ -62,7 +63,7 @@ function AddressPage() {
   return (
   <>
   <div className="flex justify-end px-52 mt-12" >
-      <button className=" w-72 h-14 bg-kb-black text-white rounded-lg font-semibold text-xl"> Your Order </button>
+      <Link to='/myorder'> <button className=" w-72 h-14 bg-kb-black text-white rounded-lg font-semibold text-xl"> Your Order </button> </Link>
   </div>
 
     <div className="grid grid-cols-2 px-52 mt-14 mb-14">

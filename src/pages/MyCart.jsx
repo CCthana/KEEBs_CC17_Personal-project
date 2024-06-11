@@ -2,35 +2,37 @@ import { Link } from "react-router-dom"
 import CartCard from "../components/CartCard"
 import banner from '../assets/cartbanner3.jpg'
 import { useEffect, useState } from "react"
-import useAuth from "../hooks/useAuth"
-import cartApi from "../apis/cart"
+// import useAuth from "../hooks/useAuth"
+// import cartApi from "../apis/cart"
+import useCart from "../hooks/useCart"
 
 
 function MyCart() {
-   const [ cartItem, setCartItem ] = useState([]);
-   const {authUser} =  useAuth()
+   // const [ cartItem, setCartItem ] = useState([]);
+   // const {authUser} =  useAuth()
+   const {cartItem, setCartItem} = useCart()
    const [subtotal , setSubtotal] = useState(0);
 
 
-   useEffect(() => {
-      const fetchCartItem = async () => {
-         if (!authUser?.id) return;
-         try {
-            const userId = authUser.id
-            const res = await cartApi.getCartItem(userId)
-            const data =  res.data.reduce((acc, item) => {
-               acc.push({cartId : item.id, ...item.product})
-               return acc
-            }, [])
-            console.log(data)
-            setCartItem(data)
+   // useEffect(() => {
+   //    const fetchCartItem = async () => {
+   //       if (!authUser?.id) return;
+   //       try {
+   //          const userId = authUser.id
+   //          const res = await cartApi.getCartItem(userId)
+   //          const data =  res.data.reduce((acc, item) => {
+   //             acc.push({cartId : item.id, ...item.product})
+   //             return acc
+   //          }, [])
+   //          console.log(data)
+   //          setCartItem(data)
 
-         }catch (err){
-            console.log(err)
-         }
-      }
-      fetchCartItem()
-   },[authUser])
+   //       }catch (err){
+   //          console.log(err)
+   //       }
+   //    }
+   //    fetchCartItem()
+   // },[authUser])
 
    useEffect(() => {
       const totalPrice = cartItem.reduce((total, item) => total + (+item.price), 0);

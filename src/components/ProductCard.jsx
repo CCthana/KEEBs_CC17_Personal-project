@@ -9,7 +9,8 @@ function ProductCard({ name, id, price, detail, image  }) {
 
  const handleSelectedProduct = () => {
     selectedProduct(id)
-    navigate(`/product/:${id}`)
+    // navigate(`/product/:${id}`)
+    navigate(`/product/productinfo`)
  }
 
   return (
