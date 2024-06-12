@@ -8,6 +8,7 @@ import useAuth from "../hooks/useAuth"
 import orderApi from "../apis/order"
 import { useNavigate } from "react-router-dom"
 import Spinner from "../components/Spinner"
+import { toast } from "react-toastify"
 
 
 
@@ -77,7 +78,7 @@ const handleClickUpload = async () => {
       fetchCartItem()
       navigate('/')
     }
-    alert('order succsess, thankyou for shopping with us')
+    toast.success('Order succsess, Thank you for shopping with us',{autoClose: 5000,theme: "colored"})
   }
 }
 

@@ -4,6 +4,7 @@ import validateRegister from "../validators/validate-register";
 import authApi from "../apis/auth";
 import { AxiosError } from "axios";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const initialInput = {
    email: '',
@@ -39,9 +40,11 @@ function RegisterPage() {
          setInputError({...initialInput});
          await authApi.register(input)
 
-        alert('register compelete')
+      
+        toast.success('Register compelete', {autoClose: 2000,theme: "colored"})
         setInput(initialInput)
         navigate('/login')
+      
 
      } catch (err) {
       if (err instanceof AxiosError) {

@@ -8,6 +8,8 @@ import useAuth from '../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 import cartApi from '../apis/cart';
 import useCart from '../hooks/useCart';
+import { toast } from 'react-toastify';
+import { Alien, BinIcon } from '../icons';
 
 function ProductInfoPage() {
    const[selectedProduct, setSelectedProduct] = useState();
@@ -29,6 +31,8 @@ function ProductInfoPage() {
       fetchSelectedProduct();
    },[])
 
+
+
    const handleAddToCart = async () => {
       try {
 
@@ -42,8 +46,7 @@ function ProductInfoPage() {
             }
             const res = await cartApi.addItemToCart(data)
             fetchCartItem()
-            alert(res.data.message)
-            
+            toast.success(`Item added to your cart `, {autoClose: 2000 } );
          }
       } catch (err) {
          console.log(err)

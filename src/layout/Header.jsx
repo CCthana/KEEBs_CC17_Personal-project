@@ -3,6 +3,7 @@ import logo from '../assets/keebslogo.png'
 import { CartIcon, PersonIcon } from "../icons"
 import useAuth from "../hooks/useAuth";
 import useCart from "../hooks/useCart";
+import { toast } from "react-toastify";
 
 
 
@@ -15,6 +16,7 @@ function Header() {
 
   const handleClickLogout = () => {
      logout();
+     toast.error('Logged out',{autoClose: 2000,theme: "colored"})
      navigate('/login');
   };
 

@@ -11,3 +11,8 @@
   background-color: #F9F9F9;
  
 }
+
+.Toastify__toast-body { 
+  font-family: "inter" ;
+  font-weight: 400;
+}

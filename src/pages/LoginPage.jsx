@@ -5,6 +5,7 @@ import validateLogin from "../validators/validator-login"
 import { useNavigate } from "react-router-dom"
 import useAuth from "../hooks/useAuth"
 import { AxiosError } from "axios"
+import { toast } from "react-toastify"
 
 const initialInput = {
    email: '',
@@ -21,7 +22,7 @@ function LoginPage() {
    const [inputError , setInputError] = useState(initialInputError);
    
 
-   const { login } = useAuth();
+   const { login, authUser } = useAuth();
 
    const navigate = useNavigate();
 
@@ -42,13 +43,13 @@ function LoginPage() {
             await login(input);
             navigate('/')
 
-               alert('login succsess')
+            toast.success(` Login seccsess `,{autoClose: 2000,theme: "colored"})
             
 
          } catch (err) {
            
-            alert('invalid email or password')
-            setInputError({  password: 'Invalid password'})
+            toast.error('invalid email or password',{autoClose: 2500,theme: "colored"})
+            setInputError({ email:'Invalid email' , password: 'Invalid password'})
             if (err instanceof AxiosError) {
                const message = err.response.status === 400 ? 'Invalid login' : 'intenal server error'
                   return (

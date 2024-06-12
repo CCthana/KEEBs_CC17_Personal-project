@@ -17,7 +17,7 @@ export default function CartContextProvider ({children} ) {
             acc.push({cartId : item.id, ...item.product})
             return acc
          }, [])
-         console.log(data)
+       
          setCartItem(data)
 
       }catch (err){

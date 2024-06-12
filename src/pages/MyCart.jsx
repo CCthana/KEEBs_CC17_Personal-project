@@ -48,7 +48,8 @@ function MyCart() {
          <img src={banner} className="object-cover" />
          <h1 className=" text-5xl text-white font-bold absolute top-[50%] ml-16">SHOPPING CART</h1>
       </div>
-
+      {cartItem.length > 0 ?
+      <>
       <h1 className=" text-3xl font-extrabold mb-10 mt-28 ml-40">SHOPPING CART</h1>
       <div >
          <div className=" ">
@@ -66,7 +67,7 @@ function MyCart() {
             
             
          </div>
-
+        
          <div className=" flex justify-center items-center mt-10">
             <div className="h-[2px] w-[80%] mt-4 mb-4 border-t-2 border-gray-400"></div>
 
@@ -85,6 +86,8 @@ function MyCart() {
          </div>
 
       </div>
+      </>
+      : <div className="h-[40vh] flex justify-center items-center"> <h1 className=" text-4xl text-kb-black font-bold ">YOUR SHOPPING CART IS EMPTY</h1> </div> }
    </div>
   )
 }

@@ -16,7 +16,7 @@ function ProductCard({ name, id, price, detail, image  }) {
   return (
   
     <div className=' w-[350px] h-[470px] shadow-xl rounded-sm ' type='button' onClick={handleSelectedProduct}> 
-      <div className=' w-[350px] h-[350px '>
+      <div className=' w-[350px] h-[350px] '>
     
         <img src={image || product} className='rounded-sm' />
        

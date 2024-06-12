@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import cartApi from '../apis/cart'
 import product from '../assets/product.png'
 import { BinIcon } from '../icons'
@@ -7,7 +8,7 @@ function CartCard({cartId, productId, image, name, price, setCartItem}) {
   const handleDelete = async () => {
     try {
       const res = await cartApi.deleteCartItem(cartId);
-      alert(res.data.message)
+      toast.error('Item deleted')
       setCartItem(prev => prev.filter(item =>  item.cartId !== cartId))
     } catch (err) {
       console.log(err)

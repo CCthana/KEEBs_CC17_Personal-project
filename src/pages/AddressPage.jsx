@@ -4,6 +4,7 @@ import userApi from "../apis/user";
 import useAuth from "../hooks/useAuth";
 import validateAddress from "../validators/validate-address";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 
 const initialInput = {
@@ -50,7 +51,7 @@ function AddressPage() {
             setInputError(initialInputError);
 
          await userApi.updateAddress(authUser.id,input)
-         alert('address updated')
+         toast.success('address updated')
          fetchUser()
          setInput(initialInput)
       }
