@@ -38,3 +38,20 @@ export function UploadIcon ({className = null }) {
     <svg className={className}  viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>Upload-2</title> <g id="Page-1" strokeWidth="0.9600000000000002" fill="none" fillRule="evenodd"> <g id="Upload-2"> <rect id="Rectangle" fillRule="nonzero" x="0" y="0" width="24" height="24"> </rect> <line x1="12" y1="14" x2="12" y2="20" id="Path" stroke="#656565" strokeWidth="0.9600000000000002" strokeLinecap="round"> </line> <path d="M15,15 L12.7071,12.7071 C12.3166,12.3166 11.6834,12.3166 11.2929,12.7071 L9,15" id="Path" stroke="#656565" strokeWidth="0.9600000000000002" strokeLinecap="round"> </path> <path d="M19.9495,16 C20.5978,15.3647 21,14.4793 21,13.5 C21,11.567 19.433,10 17.5,10 C17.3078,10 17.1192,10.0155 16.9354,10.0453 C16.4698,6.63095 13.5422,4 10,4 C6.13401,4 3,7.13401 3,11 C3,12.9587 3.80447,14.7295 5.10102,16" id="Path" stroke="#656565" strokeWidth="0.9600000000000002" strokeLinecap="round"> </path> </g> </g> </g></svg>
   )
 }
+
+export function LoaderIcon({ className = null }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 20 20"
+      height="2rem"
+      width="2rem"
+      fill="#000"
+      className={className}
+    >
+      <g>
+        <path d="M10,1V3a7,7,0,1,1-7,7H1a9,9,0,1,0,9-9Z" />
+      </g>
+    </svg>
+  );
+}

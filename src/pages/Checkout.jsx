@@ -3,25 +3,89 @@ import CartCard from "../components/CartCard"
 import CheckoutCard from "../components/CheckoutCard"
 import useCart from "../hooks/useCart"
 import { UploadIcon } from "../icons"
+import userApi from "../apis/user"
+import useAuth from "../hooks/useAuth"
+import orderApi from "../apis/order"
+import { useNavigate } from "react-router-dom"
+import Spinner from "../components/Spinner"
 
 
 
 function Checkout() {
- const {cartItem} = useCart()
-
+ const {cartItem, fetchCartItem} = useCart()
+ const {authUser} = useAuth()
  const fileEl = useRef();
 
  const [file, setFile]  = useState(null);
  const [subtotal , setSubtotal] = useState(0);
+ const [loading, setIsLoading] = useState(false);
  
+ const navigate = useNavigate();
+
  useEffect(() => {
   const totalPrice = cartItem.reduce((total, item) => total + (+item.price), 0);
   setSubtotal(totalPrice)
 },[cartItem])
 
 
+const handleClickUpload = async () => {
+  try {
+    console.log(cartItem)
+
+    setIsLoading(true)
+    if(!file) {
+        alert('please upload payment')
+    }
+
+    if(file) {
+      const formData = new FormData();
+      formData.append('image', file)
+
+      const resUpload = await userApi.upload(formData);
+
+      console.log(resUpload)
+      
+
+      const productInput = cartItem.reduce((acc, item) =>  {
+        acc.push({
+          productId: item.id,
+          price: item.price,
+        })
+        return acc
+      }, [])
+      
+      console.log(productInput)
+
+      const data = {
+        payment: resUpload.data.uploadUrl,
+        userId: authUser.id,
+        product: productInput
+      }
+
+      const output = await orderApi.createOrder(data)
+      console.log(output.data.message)
+
+    }
+
+
+
+  } catch (err) {
+    console.log(err)
+  } finally {
+    setIsLoading(false)
+    if(file) {
+      fetchCartItem()
+      navigate('/')
+    }
+    alert('order succsess, thankyou for shopping with us')
+  }
+}
+
+
 
   return (
+  <>
+  { loading ? <Spinner /> : 
   <>
     <div className="grid grid-cols-2 px-32 pt-14">
       <div className="w-full">
@@ -91,9 +155,11 @@ function Checkout() {
     
 </div>
 
-<div className="flex justify-end w-[90%] mb-20 mt-[-20]"> 
-    <button className="w-96 bg-kb-black text-white h-14 font-semibold"> Confirm Payment</button>
+    <div className="flex justify-end w-[90%] mb-20 mt-[-20]"> 
+    <button className="w-96 bg-kb-black text-white h-14 font-semibold" onClick={handleClickUpload}> Confirm Payment</button>
     </div>
+  </>
+     }
 </>
   )
 }
