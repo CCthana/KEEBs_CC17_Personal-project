@@ -1,5 +1,6 @@
 import { Navigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import Spinner from "./Spinner";
 
 
 
@@ -9,7 +10,7 @@ function ProtectedRoute({children}) {
    
  return  ( 
   <>
-   {isAuthUserLoading && <h1>Loading...</h1>}
+   {isAuthUserLoading && <Spinner />}
    {children}
   </>
   )

@@ -7,7 +7,7 @@ productApi.getKb = () => axios.get('product/allkb')
 productApi.getKeycap = () => axios.get('product/allkeycap')
 productApi.getSw = () => axios.get('product/allsw')
 productApi.getAccess = () => axios.get('product/allaccessories')
-productApi.getProductById = (productId) => axios.get(`/product/productid/${productId}`)
+productApi.getProductByName = (productName) => axios.get(`/product/productName/${productName}`)
 
 
 export default productApi;

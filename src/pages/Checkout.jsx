@@ -85,7 +85,8 @@ const handleClickUpload = async () => {
 
 
   return (
-  <>
+  <div className="relative">
+   {cartItem.length < 1 ? <> <div className="absolute h-full w-full bg-white z-10 "> <div className="h-full flex justify-center items-center font-bold text-4xl"> You cart is empty </div> </div> </> : null }
   { loading ? <Spinner /> : 
   <>
     <div className="grid grid-cols-2 px-32 pt-14">
@@ -112,11 +113,11 @@ const handleClickUpload = async () => {
       </div>
       <div className="flex justify-end  ">
         <div className="flex flex-col w-full items-end">
-            <h1 className="text-3xl font-extrabold">Address</h1>
-        <div className="bg-white shadow-md w-[60%] h-[40%] mt-4 p-8 rounded-md ">
-          <h1 className="font-semibold pt-4"> name lastname : asdasdasd </h1>
-          <h1 className="font-semibold pt-4"> address : asdasd </h1>
-          <h1 className="font-semibold pt-4"> phone : asdasd </h1>
+            <h1 className="text-3xl font-extrabold">{authUser?.userName} Address</h1>
+        <div className="bg-white shadow-md w-[60%] mt-4 p-8 rounded-md ">
+          <h1 className="font-md text-lg "> <span className="font-bold" > Name:  </span> {authUser?.firstName} {authUser?.lastName} </h1>
+          <h1 className="font-md text-lg pt-4"> <span className="font-bold" >Address :</span> {authUser?.address} </h1>
+          <h1 className="font-md  text-lg pt-4"> <span className="font-bold" >Phone : </span>{authUser?.phone} </h1>
         </div>
       </div>
       </div>
@@ -146,9 +147,9 @@ const handleClickUpload = async () => {
     <div className="flex flex-col w-full h-[500px] items-end">
     <h1 className="text-3xl font-extrabold">PAYMENT METHOD</h1>
         <div className="bg-white shadow-md w-[60%] h-[40%]  p-8 rounded-md ">
-          <h1 className="font-semibold pt-4"> name lastname : asdasdasd </h1>
-          <h1 className="font-semibold pt-4"> address : asdasd </h1>
-          <h1 className="font-semibold pt-4"> phone : asdasd </h1>
+          <h1 className="font-semibold pt-4"> Bank Account : LBANK</h1>
+          <h1 className="font-semibold pt-4"> Account no. 12-123-12-12-1 </h1>
+          <h1 className="font-semibold pt-4"> Branch : BKK </h1>
         </div>
       </div>
   </div>
@@ -161,7 +162,7 @@ const handleClickUpload = async () => {
     </div>
   </>
      }
-</>
+</div>
   )
 }
 

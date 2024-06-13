@@ -45,9 +45,9 @@ export default function ProductContextProvider({children}) {
       fetchAllProduct();
    }, []);
 
-   const selectedProduct = async (productId) => {
+   const selectedProduct = async (productName) => {
       try {
-         setSelectedProduct(productId)
+         setSelectedProduct(productName)
       } catch (err) {
          console.log(err)
       }

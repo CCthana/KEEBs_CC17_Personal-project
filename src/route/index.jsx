@@ -19,6 +19,9 @@ import ProtectUserRoute from '../components/ProtectUserRoute';
 import CartContextProvider from '../contexts/CartContext';
 import AdminPage from '../pages/AdminPage';
 import MyOrderPage from '../pages/MyOrderPage';
+import AdminLoginPage from '../pages/AdminLoginPage';
+import ProtectedAdminRoute from '../components/ProtectedAdminRoute';
+
 
 const router = createBrowserRouter([
       {path: '/' , 
@@ -52,19 +55,32 @@ const router = createBrowserRouter([
                   {path: 'checkout', element: <Checkout />},
                   {path: 'profile', element: <AddressPage />},
                   {path: 'myorder', element: <MyOrderPage />},
+                
+                 
             ]},
-            {path: '/admin', element: <AdminPage />},
-            
-            
-            
-      ]
+      ]}, 
 
+      {path: '/admin', 
+      element: ( 
+      <ProtectedAdminRoute>
+            <Outlet />
+            
+      </ProtectedAdminRoute> ),
+      errorElement: <NotFound />,
+      children: [
+       {path: 'login', element: <AdminLoginPage />},
+       {path: 'dashboard', element: <AdminPage />}
+      ]
 },
+      // {path: '/admin/dashboard', element: <AdminPage />}
+      
+     
+
      
       
 ])
 
-
+// <ProtectedAdminRoute>
 
 export default function Router() {
 

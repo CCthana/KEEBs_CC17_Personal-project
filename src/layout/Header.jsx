@@ -31,6 +31,7 @@ function Header() {
       <div className=" flex justify-center items-center gap-8 w-64 ">
       <Link to="/"> <h1 className=" text-lg font-semibold hover:underline">HOME</h1>  </Link>
       <Link to="/product"> <h1 className="  text-lg  font-semibold hover:underline">PRODUCT</h1> </Link>
+      
       </div>
 
       <div className=" flex justify-center items-center gap-6 w-64 ">

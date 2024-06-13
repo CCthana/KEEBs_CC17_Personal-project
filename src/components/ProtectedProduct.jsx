@@ -1,4 +1,5 @@
 import useProduct from "../hooks/useProduct";
+import Spinner from "./Spinner";
 
 
 
@@ -8,7 +9,7 @@ function ProtectedProduct({children}) {
    
  return  ( 
   <>
-   {isAllProductLoading && <h1>Loading...</h1>}
+   {isAllProductLoading && <Spinner />}
    {children}
   </>
   )

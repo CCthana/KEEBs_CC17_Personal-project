@@ -7,6 +7,7 @@ export  const AuthContext = createContext();
 export default function AuthContextProvider({children}) {
    const [authUser, setAuthUser] = useState(null);
    const [isAuthUserLoading, setIsAuthUserLoading] = useState(true);
+   const [authAdmin, setAuthAdmin] = useState();
 
    
    const fetchUser = async () => {
@@ -14,6 +15,9 @@ export default function AuthContextProvider({children}) {
          if(getAccessToken()) {
             const res = await authApi.getAuthUser();
             setAuthUser(res.data.user)
+            setAuthAdmin(res.data.user.isAdmin)
+         
+
          }
       } catch (err) {
          console.log(err)
@@ -26,16 +30,18 @@ export default function AuthContextProvider({children}) {
    useEffect(() => {
       
       fetchUser();
+      console.log(authUser)
    }, []);
 
 
    const login = async (credentials) => {
       const res = await authApi.login(credentials)
       setAccessToken(res.data.accessToken);
-      console.log(res)
       const resGetAuthUser = await authApi.getAuthUser();
       setAuthUser(resGetAuthUser.data.user);
-      
+
+     
+
    };
 
   

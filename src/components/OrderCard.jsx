@@ -7,7 +7,7 @@ function OrderCard({id , status, orderItems}) {
   
   return (
    <>
-    <div className="w-full  flex items-center justify-center p-10 border-2 rounded-md shadow-sm hover:shadow-lg hover:cursor-pointer ">
+    <div className="w-full  flex items-center justify-center p-10 border-2 rounded-md  bg-white shadow-sm hover:shadow-lg hover:cursor-pointer ">
       
       
       <div className="mx-4">
@@ -24,7 +24,7 @@ function OrderCard({id , status, orderItems}) {
       
       <div className="flex flex-1 justify-end  items-center mr-4">
      
-      <div className= {` bg-kb-black text-white w-32 h-10 rounded-md border-2 flex justify-center items-center ${status === "APPROVED" ? 'text-green-500' : status === "SHIPPING" ? 'text-blue-400' : null} `}> {status}</div>
+      <div className= {` bg-kb-black text-white w-32 h-10 rounded-md border-2 flex justify-center items-center ${status === "APPROVED" ? 'text-green-400' : status === "SHIPPING" ? 'text-orange-500' : null } `}> {status} </div>
       </div>
       
      

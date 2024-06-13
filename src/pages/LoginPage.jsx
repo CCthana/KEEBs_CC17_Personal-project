@@ -26,6 +26,8 @@ function LoginPage() {
 
    const navigate = useNavigate();
 
+  
+
       const handleChangeInput = e => {
          setInput({...input, [e.target.name]: e.target.value})
       }
@@ -42,7 +44,7 @@ function LoginPage() {
 
             await login(input);
             navigate('/')
-
+            
             toast.success(` Login seccsess `,{autoClose: 2000,theme: "colored"})
             
 
@@ -62,8 +64,7 @@ function LoginPage() {
        
     
 
-
-
+   
 
   return (
     <div className=" h-[80vh]  grid grid-cols-2 justify-center ">

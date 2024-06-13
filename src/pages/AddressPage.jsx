@@ -64,7 +64,9 @@ function AddressPage() {
   return (
   <>
   <div className="flex justify-end px-52 mt-12" >
+      {authUser?.isAdmin ? <Link to='/admin/login'><button className=" w-72 h-14 bg-kb-black text-white rounded-lg font-semibold text-xl mr-8"> admin </button></Link>: null}
       <Link to='/myorder'> <button className=" w-72 h-14 bg-kb-black text-white rounded-lg font-semibold text-xl"> Your Order </button> </Link>
+      
   </div>
 
     <div className="grid grid-cols-2 px-52 mt-14 mb-14">
@@ -92,10 +94,10 @@ function AddressPage() {
 
                <div className="bg-white shadow-md w-[70%] min-h-[40%] mt-4 p-8 rounded-md ">
                   {authUser?.address ? <>
-                  <h1 className="font-semibold pt-4"> name : {authUser?.firstName} {authUser?.lastName}</h1>
-                  <h1 className="font-semibold pt-4"> phone : {authUser?.phone} </h1>
-                  <h1 className="font-semibold pt-4 break-words"> address : {authUser?.address} </h1>
-                  </> : <h1 className="font-semibold pt-4"> You hane no address info.</h1>
+                  <h1 className="font-md pt-4"> <span className="font-bold"> Firstname : </span> {authUser?.firstName} <span className="font-bold ml-4">Lastname :</span> {authUser?.lastName}</h1>
+                  <h1 className="font-md pt-4"> <span className="font-bold "> Phone : </span> {authUser?.phone} </h1>
+                  <h1 className="font-md pt-4 break-words"> <span className="font-bold "> Address : </span>{authUser?.address} </h1>
+                  </> : <h1 className="font-md pt-4"> You hane no address info.</h1>
                }
                </div>
          

@@ -21,7 +21,7 @@ function ProductInfoPage() {
       window.scrollTo(0, 0)
       const fetchSelectedProduct = async () => {
          try {
-            const res = await productApi.getProductById(getSelectedProduct());
+            const res = await productApi.getProductByName(getSelectedProduct());
             setSelectedProduct(res.data.selectedProduct)
             
          } catch (err) {
