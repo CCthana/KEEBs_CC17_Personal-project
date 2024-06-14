@@ -1,5 +1,5 @@
 import {  useNavigate } from 'react-router-dom'
-import product from '../assets/product.png'
+
 import useProduct from '../hooks/useProduct'
 
 function ProductCard({ name, id, price, detail, image  }) {
@@ -15,16 +15,16 @@ function ProductCard({ name, id, price, detail, image  }) {
 
   return (
   
-    <div className=' w-[350px] h-[470px] shadow-xl rounded-sm ' type='button' onClick={handleSelectedProduct}> 
+    <div className=' w-[350px] h-[470px] shadow-xl rounded-sm hover:cursor-pointer hover:shadow-2xl' type='button' onClick={handleSelectedProduct}> 
       <div className=' w-[350px] h-[350px] '>
     
-        <img src={image || product} className='rounded-sm' />
+        <img src={image} className='rounded-sm' />
        
       </div>
       <div className=' h-[170px] pt-4 pl-6'>
-         <h1 className=' text-xl font-bold' > {name} </h1>
-         <p className=' text-sm'> {detail}</p>
-         <p className=' text-lg mt-2 font-semibold '> ${price} </p>
+         <h1 className=' text-lg font-semibold mt-4' > {name} </h1>
+         
+         <p className=' text-md mt-2 font-semibold '> ${price} </p>
       </div>
     </div>
   )

@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import banner from '../assets/all_pd.jpg'
+import banner from '../assets/banneraccess.jpg'
 import ProductCard from '../components/ProductCard'
 import useProduct from '../hooks/useProduct'
 
@@ -15,9 +15,10 @@ function AllAccessoriesPage() {
   return (
 
    <div>
-   <div className='h-[420px] overflow-hidden '> 
-      <img src={banner} />
-   </div>
+     <div className=' h-[420px] overflow-hidden relative'>
+         <img src={banner} className="object-cover w-full" />
+         <h1 className=" text-5xl text-white font-bold absolute top-[50%] ml-16">ACCESSORIES</h1>
+      </div>
 
    <div>
       <h1 className=" text-3xl font-extrabold mb-10 mt-32 ml-32">ACCESSORIES</h1>

@@ -53,7 +53,7 @@ function AdminCard({ orderId, userName, image, status, orderItems, date, user, f
             <h1 className='w-full font-bold'> {userName}</h1>
             <h1 className='w-full font-bold'> {orderItems.length}</h1>
             <Link to={image} className='w-full font-bold'> <button> IMG </button> </Link>
-            <div className='w-full flex items-center justify-center '> <div className= {` bg-kb-black text-white w-32 h-10 rounded-md border-2 flex justify-center items-center ${status === "APPROVED" ? 'text-green-400' : status === "SHIPPING" ? 'text-orange-500' : null } `}>{status}</div> </div>
+            <div className='w-full flex items-center justify-center '> <div className= {` bg-kb-black text-white w-32 h-10 rounded-md border-2 flex justify-center items-center ${status === "APPROVED" ? 'text-green-500' : status === "SHIPPING" ? 'text-orange-400' : null } `}>{status}</div> </div>
             <button className='w-full flex items-center justify-center' onClick={handleClick}>  <Dropdown className=' w-9 hover:cursor-pointer' /> </button>
          
           
@@ -68,8 +68,8 @@ function AdminCard({ orderId, userName, image, status, orderItems, date, user, f
               <h1 className="font-md"> { orderItems.map(item => (<p key={item.id}> {item.product.name}</p>)  ) } </h1>
               <div className="flex">
                   <button className= {` bg-kb-black text-white w-32 h-10 rounded-md border-2 flex justify-center items-center `} value={'PENDING'} onClick={handleStatusUpdate} >PENDING</button>
-                  <button className= {` bg-kb-black text-white w-32 h-10 rounded-md border-2 flex justify-center items-center text-green-400 `} value={'APPROVED'} onClick={ handleStatusUpdate} >APPROVED</button>
-                  <button className= {` bg-kb-black text-white w-32 h-10 rounded-md border-2 flex justify-center items-center text-orange-500 `}  value={'SHIPPING'} onClick={handleStatusUpdate} >SHIPPING</button>
+                  <button className= {` bg-kb-black  w-32 h-10 rounded-md border-2 flex justify-center items-center text-green-500 `} value={'APPROVED'} onClick={ handleStatusUpdate} >APPROVED</button>
+                  <button className= {` bg-kb-black w-32 h-10 rounded-md border-2 flex justify-center items-center text-orange-400 `}  value={'SHIPPING'} onClick={handleStatusUpdate} >SHIPPING</button>
               </div>
               </div>
                <div>
@@ -83,7 +83,7 @@ function AdminCard({ orderId, userName, image, status, orderItems, date, user, f
                   <div className="flex items-center justify-center flex-col pt-4 mt-4  bg-gray-100 rounded-md"> <img src={image} className=" h-80" /> <h1 className="text-xl font-semibold mt-2"> Payment </h1> </div>
                </div>
                <div className=" bg-kb-black rounded-md mt-4 p-2 flex items-center justify-between " >
-                  <div className="text-white text-xl "> Order Date : <span className="font-bold mx-4"> {date.split("T")[0]} {date.split("T")[1].split(".")[0]} </span> </div>
+                  <div className="text-white text-xl "> Order Date : <span className="font-bold mx-4">  {date.split("T")[0]}  </span> </div>
                   <div className="text-xl text-white ">Total : <span className="font-bold mx-4"> {total.toLocaleString('en-US')}$ </span> </div>
                </div>
           </div> 

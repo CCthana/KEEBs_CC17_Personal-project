@@ -64,7 +64,7 @@ function ProductInfoPage() {
    <div className=" min-h-[70vh]  grid grid-cols-2 ">
          <div className=' flex justify-center '>
             <div className='flex justify-center w-[550px] h-[580px]'>
-            <  img src={odin} className='h-full rounded-sm ' />
+            <  img src={selectedProduct?.image} className='h-full rounded-sm ' />
             </div>
          </div>
 
@@ -80,18 +80,15 @@ function ProductInfoPage() {
 
    <div className=' flex items-center justify-center p-20 flex-col'>
       <div className='flex mb-20 '>
-       <h1 className='text-center'>{selectedProduct?.info || `Are you getting sick of the tiny layouts? Let's meet the Odin
-            The design is inspired by the Stora Hammars 1 stone which depicts the Valknut, Odin's cult symbol
-            Speaking of Odin, he is the All-Father. He is associated with that is good (wisdom, healing, royalty, knowledge, battle, victory, poetry, a husband to the Goddess Frigg) and the bad (death, the gallows, war, frenzy).
-            Odin represents the ALL, the EVERYTHING, which is what KBDfans wants to project in a keyboard with a 100% layout.`}</h1>
+       <h1 className='text-center'>{selectedProduct?.info}</h1>
       </div> 
 
-       <div className='h-[480px] overflow-hidden mb-20'>
-         <img src={selectedProduct?.photo || odin1} className='w-full'/>
+       <div className='h-[480px] overflow-hidden mb-10'>
+         <img src={selectedProduct?.photo} className='w-full'/>
        </div>
 
-       <div className='h-[480px] overflow-hidden mb-20'>
-         <img src={selectedProduct?.secondPhoto || odin2} className='w-full'/>
+       <div className='h-[480px] overflow-hidden mb-14'>
+         <img src={selectedProduct?.secondPhoto} className='w-full'/>
        </div>
 
    </div>

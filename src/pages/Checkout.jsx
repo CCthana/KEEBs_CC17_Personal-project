@@ -133,8 +133,8 @@ const handleClickUpload = async () => {
     }} />
   <h1 className="text-3xl font-extrabold">Payment Confirmation</h1>
   <h1> upload payment credential here </h1>
-  <div className="bg-white w-[570px] h-[450px] flex items-center justify-center rounded-md mt-8 shadow-lg hover:shadow-2xl hover:cursor-pointer object-contain" onClick={() => fileEl.current.click()} >
-    {file ? <img src={URL.createObjectURL(file)} className=" w-[70%] object-contain rounded-md shadow-md"/> : <div className="flex justify-center items-center">
+  <div className="bg-white w-[570px] h-[450px] flex items-center justify-center rounded-md mt-8 p-2 shadow-lg hover:shadow-2xl hover:cursor-pointer object-contain" onClick={() => fileEl.current.click()} >
+    {file ? <img src={URL.createObjectURL(file)} className=" w-3/5 object-contain rounded-md shadow-md"/> : <div className="flex justify-center items-center">
       <div className="w-[250px] h-[250px] bg-gray-300 rounded-full relative flex items-center justify-center" >
       <UploadIcon className=" w-40  " />
       <h1 className="absolute  top-[75%] left-[20%]">click here to upload</h1>

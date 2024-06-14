@@ -64,7 +64,6 @@ const router = createBrowserRouter([
       element: ( 
       <ProtectedAdminRoute>
             <Outlet />
-            
       </ProtectedAdminRoute> ),
       errorElement: <NotFound />,
       children: [

@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import banner from '../assets/all_pd.jpg'
+import banner from '../assets/bannerkeycap.jpg'
 import ProductCard from '../components/ProductCard'
 import useProduct from '../hooks/useProduct'
 
@@ -14,8 +14,9 @@ function AllKeycapPage() {
   return (
 
     <div>
-      <div className='h-[420px] overflow-hidden '> 
-         <img src={banner} />
+      <div className=' h-[420px] overflow-hidden relative'>
+         <img src={banner} className="object-cover w-full" />
+         <h1 className=" text-5xl text-white font-bold absolute top-[50%] ml-16">KEYCAP</h1>
       </div>
 
       <div>
