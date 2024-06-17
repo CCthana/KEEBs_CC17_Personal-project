@@ -1,8 +1,8 @@
 
 import React, { useState } from 'react'
-import logo from '../assets/keebslogobl.png'
+import logo from '../assets/keebslogosvg.svg'
 import adminApi from '../apis/admin';
-import { setAccessToken, setAnotherToken } from '../utils/local-storage';
+import { removeAccessToken, setAccessToken, setAnotherToken } from '../utils/local-storage';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
@@ -16,6 +16,8 @@ function AdminLoginPage() {
    const [input, setInput] = useState(initialInput);
    const navigate = useNavigate();
 
+
+  
    const handleChangeInput = e => {
       setInput({...input, [e.target.name]: e.target.value})
    }
@@ -23,7 +25,7 @@ function AdminLoginPage() {
    const handleSubmitForm = async e => {
       try {
          e.preventDefault();
-
+        
          const res = await adminApi.login(input)
          setAnotherToken(res.data.accessToken);
          navigate('/admin/dashboard')
@@ -38,7 +40,7 @@ function AdminLoginPage() {
   return (
    <>
    <form className=" h-[70vh] flex justify-center items-center mb-20 relative" onSubmit={handleSubmitForm} >
-   <img src={logo} className=' w-full opacity-10 absolute mx-auto -z-10'/>
+   <img src={logo} className=' w-3/4 opacity-10 absolute mx-auto -z-10'/>
 
    <div className=" w-1/2 justify-center items-center " >
 

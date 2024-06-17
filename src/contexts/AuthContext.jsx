@@ -28,9 +28,7 @@ export default function AuthContextProvider({children}) {
 
    
    useEffect(() => {
-      
       fetchUser();
-      console.log(authUser)
    }, []);
 
 
@@ -47,8 +45,8 @@ export default function AuthContextProvider({children}) {
   
 
    const logout = () => {
-      removeAccessToken();
       setAuthUser(null);
+      localStorage.clear();
    };
     
  

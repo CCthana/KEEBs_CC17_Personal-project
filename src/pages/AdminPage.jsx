@@ -12,6 +12,7 @@ function AdminPage() {
  
 
   const handleClickLogout = () => {
+    localStorage.clear()
     removeAnotherToken();
     toast.error('Logged out',{autoClose: 2000,theme: "colored"})
     navigate('/admin/login');
@@ -19,9 +20,11 @@ function AdminPage() {
 
  const fetchUserOrder = async () => {
     try {
+      
       const res = await adminApi.getAllOrder();
       setOrder(res.data.allOrder)
       console.log(res.data.allOrder)
+      
     } catch (err) {
     console.log(err)
     }
