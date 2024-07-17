@@ -24,7 +24,7 @@ function OrderCard({id , status, orderItems}) {
       
       <div className="flex flex-1 justify-end  items-center mr-4">
      
-      <div className= {` bg-kb-black text-white w-32 h-10 rounded-md border-2 flex justify-center items-center ${status === "APPROVED" ? 'text-green-500' : status === "SHIPPING" ? 'text-orange-600' : null } `}> {status} </div>
+      <div className= {` bg-kb-black text-white w-32 h-10 rounded-md border-2 flex justify-center items-center ${status === "APPROVED" ? 'text-green-400' : status === "SHIPPING" ? 'text-orange-500' : null } `}> {status} </div>
       </div>
       
      

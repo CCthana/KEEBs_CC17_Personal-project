@@ -62,7 +62,7 @@ const handleClickUpload = async () => {
         userId: authUser.id,
         product: productInput
       }
-
+     
       const output = await orderApi.createOrder(data)
       console.log(output.data.message)
 
